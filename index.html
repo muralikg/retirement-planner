@@ -140,7 +140,7 @@
 		populate_form();
 		document.getElementById('fire-form').addEventListener('submit', function (e) {
 			var data = Array.from(new FormData(e.target));
-			var data_dict = data.reduce( (acc, row) => (console.log(row), acc[row[0]]=parseInt(row[1]), acc), {});
+			var data_dict = data.reduce( (acc, row) => (acc[row[0]]=parseInt(row[1]), acc), {});
 			var result = when_to_retire(data_dict);
 			window.result = result;
 			document.getElementById('duration').innerText = `Retire in ${parseInt(result.duration/12)} Years ${result.duration%12} Months`;
@@ -177,8 +177,6 @@
 							decimation: {
 								enabled: true,
 								algorithm: 'lttb',
-								samples: 80,
-								threshold: 80,
 							},
 						},
 						scales: {
@@ -186,7 +184,7 @@
 								type: 'time',
 								ticks: {
 									source: 'auto',
-									maxRotation: 0,
+									maxRotation: 50,
 									autoSkip: true,
 								}
 							},
